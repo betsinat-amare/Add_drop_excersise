@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,10 +38,12 @@ fun SignUpScreen(){
         color= colorGrayBackground,
         modifier=Modifier.fillMaxSize()
             .background(Color(0xFFE0E7FF))
-            .padding(top=140.dp),
+            .padding(top=140.dp)
+           ,
 
     ){
-        Column (modifier=Modifier.fillMaxSize()){
+        Column (modifier=Modifier.fillMaxSize()
+            .verticalScroll(rememberScrollState())){
             HeadingTextComponent(value= stringResource(id= R.string.Start))
             Spacer(modifier=Modifier.height(10.dp))
             NormalTextComponent(value= stringResource(id=R.string.Hello))
@@ -49,11 +53,18 @@ fun SignUpScreen(){
                 contentDescription= stringResource(id=R.string.profileImg)
 
             )
+            TextFieldComponent(labelValue = stringResource(id=R.string.email),
+                painterResource =(painterResource(id=R.drawable.email)),
+                contentDescription= stringResource(id=R.string.IdImg)
+
+            )
+
             TextFieldComponent(labelValue = stringResource(id=R.string.Id),
                 painterResource =(painterResource(id=R.drawable.id_image)),
                 contentDescription= stringResource(id=R.string.IdImg)
 
             )
+
             PasswordTextFieldComponent(labelValue = stringResource(id=R.string.password),
                 painterResource =(painterResource(id=R.drawable.password)),
                 contentDescription= stringResource(id=R.string.passwordImg)
@@ -69,7 +80,7 @@ fun SignUpScreen(){
                     Course_add_and_drop_managerAppRoute.navigateTo(Screen.TermsAndConditionsScreen)
 
                 })
-            Spacer(modifier=Modifier.height(20.dp))
+            Spacer(modifier=Modifier.height(20.dp).padding(bottom=20.dp))
             ButtonComponent(value= stringResource(id=R.string.signUp),
                 onClick = {})
             Spacer(modifier=Modifier.height(10.dp))
@@ -77,6 +88,7 @@ fun SignUpScreen(){
             ClickableLoginTextComponent(onTextSelected = {
                 Course_add_and_drop_managerAppRoute.navigateTo(Screen.LoginScreen)
             })
+            Spacer(modifier = Modifier.height(30.dp))
 
 
         }

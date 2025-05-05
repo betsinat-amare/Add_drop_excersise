@@ -83,4 +83,11 @@ dependencies {
     // Debugging
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+
+// Gson Converter (to convert JSON response to Kotlin objects)
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+
 }

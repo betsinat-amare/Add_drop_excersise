@@ -13,6 +13,7 @@ sealed class Screen(){
     object SelectAcademicYear:Screen()
     object AddCourse:Screen()
     object DropCourse:Screen()
+    object EditProfile:Screen()
 
 }
 object Course_add_and_drop_managerAppRoute {

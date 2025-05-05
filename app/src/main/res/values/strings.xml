@@ -6,6 +6,9 @@
     <string name="password">Enter your password</string>
     <string name="upload">Upload your picture</string>
     <string name="uploadImg">Upload image</string>
+    <string name="edit">Edit Your account</string>
+    <string name="email">Enter your email</string>
+    <string name="save">Save</string>
     <string name="profileImg">profile image</string>
     <string name="IdImg">Id image</string>
     <string name="passwordImg">password image</string>

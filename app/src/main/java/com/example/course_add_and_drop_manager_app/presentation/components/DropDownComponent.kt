@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.toSize
 import androidx.compose.material.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.DpOffset
 import com.example.course_add_and_drop_manager_app.ui.theme.colorGrayBackground
 import com.example.course_add_and_drop_manager_app.ui.theme.colorPrimary
 import com.example.course_add_and_drop_manager_app.ui.theme.colorTextField
@@ -181,6 +182,90 @@ fun DropDownCenteredRowComponent(
         }
     }
 }
+@Composable
+fun DropDownEditComponent(
+    label: String,
+    options: List<String>,
+    selectedValue: String,
+    onValueSelected: (String) -> Unit,
+    focusedDropdownBg: Color = colorGrayBackground
+) {
+    var expanded by remember { mutableStateOf(false) }
+    var textFieldSize by remember { mutableStateOf(Size.Zero) }
+
+    val icon = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown
+
+    // Outer Row to push the dropdown to the right
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.End
+    ) {
+        Box(
+            modifier = Modifier
+                .wrapContentSize(Alignment.TopEnd) // align dropdown to button
+        ) {
+            // Button-like Box
+            Box(
+                modifier = Modifier
+                    .height(40.dp)
+                    .width(100.dp)
+                    .border(
+                        width = 1.dp,
+                        color = colorTextField,
+                        shape = RoundedCornerShape(10.dp)
+                    )
+                    .background(colorTextField, RoundedCornerShape(12.dp))
+                    .clickable { expanded = !expanded }
+                    .onGloballyPositioned { coordinates ->
+                        textFieldSize = coordinates.size.toSize()
+                    },
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.End,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 8.dp)
+                ) {
+                    Text(
+                        text = selectedValue.ifEmpty { label },
+                        textAlign = TextAlign.End
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        tint = Color.Black,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
+
+            // DropdownMenu aligned below and to the right of the button
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier
+                    .width(with(LocalDensity.current) { textFieldSize.width.toDp() })
+                    .align(Alignment.TopEnd)
+                    .background(if (expanded) focusedDropdownBg else Color.White)
+            ) {
+                options.forEach { item ->
+                    DropdownMenuItem(
+                        text = { Text(text = item) },
+                        onClick = {
+                            onValueSelected(item)
+                            expanded = false
+                        },
+                        modifier = Modifier.background(colorPrimary)
+                    )
+                }
+            }
+        }
+    }
+}
 
 @Preview
 @Composable
@@ -188,7 +273,7 @@ fun DropDownCenteredRowPreview() {
     var selected by remember { mutableStateOf("") }
     val items = listOf("Option A", "Option B", "Option C")
 
-    DropDownCenteredRowComponent(
+    DropDownEditComponent(
         label = if (selected.isEmpty()) "Pick One" else selected,
         options = items,
         selectedValue = selected,

@@ -38,6 +38,7 @@ import com.example.course_add_and_drop_manager_app.R
 import com.example.course_add_and_drop_manager_app.Screen
 import com.example.course_add_and_drop_manager_app.presentation.components.DropDownCenteredRowComponent
 import com.example.course_add_and_drop_manager_app.presentation.components.DropDownComponent
+import com.example.course_add_and_drop_manager_app.presentation.components.Footer
 import com.example.course_add_and_drop_manager_app.presentation.components.NormalTextComponent
 import com.example.course_add_and_drop_manager_app.presentation.components.SystemBackButtonHandler
 import com.example.course_add_and_drop_manager_app.ui.theme.colorAccent
@@ -128,30 +129,30 @@ fun SelectAcademicYear(){
                     }
                     Spacer(modifier=Modifier.height(80.dp))
                     SelectAddOrDrop()
-//                    Spacer(modifier=Modifier.height(80.dp))
-//                    Box(modifier = Modifier.fillMaxWidth(),
-//                        contentAlignment = Alignment.Center) {
-//                        var selected by remember { mutableStateOf("") }
-//                        val items = listOf("Add", "Drop")
-//                        DropDownCenteredRowComponent(
-//                            label = if (selected.isEmpty()) "Add/Drop" else selected,
-//                            options = items,
-//                            selectedValue = selected,
-//                            onValueSelected = { selected = it }
-//                        )
-//                    }
-//
 
-
-                    // Back Icon
 
                 }
 
 
 
 
+
             }
+
     }
+        Column(modifier=Modifier.padding(bottom = 10.dp),
+            verticalArrangement = Arrangement.Bottom) {
+            val currentScreen = Course_add_and_drop_managerAppRoute.currentScreen.value
+            Footer(
+                currentScreen = currentScreen,
+                onItemSelected = { selectedScreen ->
+                    Course_add_and_drop_managerAppRoute.navigateTo(selectedScreen)
+                }
+            )
+
+
+
+        }
 
 }}
 @Composable

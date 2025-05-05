@@ -31,6 +31,7 @@ import com.example.course_add_and_drop_manager_app.Course_add_and_drop_managerAp
 import com.example.course_add_and_drop_manager_app.Screen
 import com.example.course_add_and_drop_manager_app.presentation.components.DropCard
 import com.example.course_add_and_drop_manager_app.presentation.components.DropCard
+import com.example.course_add_and_drop_manager_app.presentation.components.Footer
 import com.example.course_add_and_drop_manager_app.presentation.components.SearchBar
 import com.example.course_add_and_drop_manager_app.presentation.components.SystemBackButtonHandler
 import com.example.course_add_and_drop_manager_app.ui.theme.colorGrayBackground
@@ -93,6 +94,19 @@ fun DropCourse(){
                     text2 = "Duration: 6 weeks"
                 )
                 Spacer(modifier = Modifier.height(10.dp))
+            }
+            Column(modifier=Modifier.padding(bottom = 10.dp),
+                verticalArrangement = Arrangement.Bottom) {
+                val currentScreen = Course_add_and_drop_managerAppRoute.currentScreen.value
+                Footer(
+                    currentScreen = currentScreen,
+                    onItemSelected = { selectedScreen ->
+                        Course_add_and_drop_managerAppRoute.navigateTo(selectedScreen)
+                    }
+                )
+
+
+
             }
         }
     }
