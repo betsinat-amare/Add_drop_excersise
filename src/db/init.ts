@@ -64,6 +64,18 @@ db.serialize(() => {
     db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [2, 'Registrar', 0]);
     db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [3, 'Student', 0]);
     db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [4, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [5, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [6, 'Registrar', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [7, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [8, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [9, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [10, 'Registrar', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [11, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [12, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [13, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [14, 'Registrar', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [15, 'Student', 0]);
+    db.run('INSERT OR IGNORE INTO ids (id, role, assigned) VALUES (?, ?, ?)', [16, 'Student', 0]);
 
     const hashedPassword = bcrypt.hashSync('password123', 10);
     db.run(
