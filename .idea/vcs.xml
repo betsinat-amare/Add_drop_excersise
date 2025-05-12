@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Add_drop_excersise" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Course_add_and_drop_manager_app" vcs="Git" />
   </component>
 </project>
